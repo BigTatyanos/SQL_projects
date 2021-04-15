@@ -64,26 +64,26 @@ GO
 --INSERT INTO [KN301_Borodina].Tarifs.tarif
 -- (Name_tarifs, cost,pocket, cost_per_minute)
 -- VALUES 
--- (N'Поминутный',0, 0, 1)
--- ,(N'Первый',150, 200, 2)
--- ,(N'Безлимитный',300, 31*24*60, 0)
+-- (N'РџРѕРјРёРЅСѓС‚РЅС‹Р№',0, 0, 1)
+-- ,(N'РџРµСЂРІС‹Р№',150, 200, 2)
+-- ,(N'Р‘РµР·Р»РёРјРёС‚РЅС‹Р№',300, 31*24*60, 0)
 --GO
 
 --INSERT INTO [KN301_Borodina].Tarifs.tarif
 -- (Name_tarifs, cost, pocket, cost_per_minute)
 -- VALUES 
--- (N'Поминутный',0, 0, 0.5)
--- ,(N'Первый',2, 5, 1)
--- ,(N'Безлимитный',5, 31*24*60, 0)
+-- (N'РџРѕРјРёРЅСѓС‚РЅС‹Р№',0, 0, 0.5)
+-- ,(N'РџРµСЂРІС‹Р№',2, 5, 1)
+-- ,(N'Р‘РµР·Р»РёРјРёС‚РЅС‹Р№',5, 31*24*60, 0)
 --GO
 
 
 INSERT INTO [KN301_Borodina].Tarifs.tarif
  (Name_tarifs, cost,pocket, cost_per_minute)
  VALUES 
- (N'Поминутный',0, 0, 0.5)
- ,(N'Первый',2, 6, 1)
- ,(N'Безлимитный',6, 31*24*60, 0)
+ (N'РџРѕРјРёРЅСѓС‚РЅС‹Р№',0, 0, 0.5)
+ ,(N'РџРµСЂРІС‹Р№',2, 6, 1)
+ ,(N'Р‘РµР·Р»РёРјРёС‚РЅС‹Р№',6, 31*24*60, 0)
 GO
 
 --INSERT INTO [KN301_Borodina].Tarifs.tarif
@@ -319,8 +319,8 @@ CREATE PROCEDURE Best_tariff
 AS
 BEGIN
 	IF @minuts > 31*24*60
-		THROW 50001, 'Нет столько минут в месяце', 1
-	SELECT TOP 1 name_tarifs AS N'Выгодный тариф'
+		THROW 50001, 'РќРµС‚ СЃС‚РѕР»СЊРєРѕ РјРёРЅСѓС‚ РІ РјРµСЃСЏС†Рµ', 1
+	SELECT TOP 1 name_tarifs AS N'Р’С‹РіРѕРґРЅС‹Р№ С‚Р°СЂРёС„'
 	FROM Tarifs.segments
 	WHERE left_border <= @minuts AND @minuts <= right_border
 END
