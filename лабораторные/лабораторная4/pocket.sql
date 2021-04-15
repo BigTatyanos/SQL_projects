@@ -115,7 +115,7 @@ IF NOT EXISTS
 		INSERT INTO TableOfCursValut.curs SELECT * FROM inserted
 	END
 ELSE
-		THROW 51004, N'Такой кросс-курс уже существует', 1
+		THROW 51004, N'РўР°РєРѕР№ РєСЂРѕСЃСЃ-РєСѓСЂСЃ СѓР¶Рµ СЃСѓС‰РµСЃС‚РІСѓРµС‚', 1
 GO
 
 IF EXISTS(
@@ -170,12 +170,12 @@ BEGIN
 		WHERE Koshelek.dengi.Name_valut = @valuta 
 		AND Koshelek.dengi.Summa < @summa
 		)
-		THROW 51000, N'Недостаточно средств на счете', 1
+		THROW 51000, N'РќРµРґРѕСЃС‚Р°С‚РѕС‡РЅРѕ СЃСЂРµРґСЃС‚РІ РЅР° СЃС‡РµС‚Рµ', 1
 		IF NOT EXISTS
 		(SELECT *
 		FROM Koshelek.dengi
 		WHERE Koshelek.dengi.Name_valut = @valuta)
-		THROW 51001, N'У Вас нет такой валюты', 1
+		THROW 51001, N'РЈ Р’Р°СЃ РЅРµС‚ С‚Р°РєРѕР№ РІР°Р»СЋС‚С‹', 1
 	END
 END
 GO
@@ -207,7 +207,7 @@ BEGIN
 		VALUES 
 		(@valuta, @summa)
 		ELSE
-		THROW 51002, N'Нет такой валюты', 1
+		THROW 51002, N'РќРµС‚ С‚Р°РєРѕР№ РІР°Р»СЋС‚С‹', 1
 END
 GO
 
@@ -258,7 +258,7 @@ BEGIN
       SET @VseDengi += dbo.ConvertValut(@main_valuta,  @valut, @kol_vo)
       FETCH NEXT FROM my_cur INTO @valut, @kol_vo
    END
-   PRINT N'В кошельке имеется'
+   PRINT N'Р’ РєРѕС€РµР»СЊРєРµ РёРјРµРµС‚СЃСЏ'
    PRINT CAST(@VseDengi AS NVARCHAR) + ' ' + @main_valuta
    CLOSE my_cur
    DEALLOCATE my_cur
@@ -276,7 +276,7 @@ BEGIN
 
    OPEN my_cur
    FETCH NEXT FROM my_cur INTO @valut, @kol_vo
-   PRINT N'Содержимое кошелька'
+   PRINT N'РЎРѕРґРµСЂР¶РёРјРѕРµ РєРѕС€РµР»СЊРєР°'
    WHILE @@FETCH_STATUS = 0
    BEGIN  
       PRINT CAST(@kol_vo AS NVARCHAR) + ' ' + @valut
@@ -338,7 +338,7 @@ INSERT INTO [KN301_Borodina].Koshelek.dengi
   
  -- EXEC Popolnenie 200, N'EUR'
 
- -- SELECT Name_valut AS N'Валюта', Summa AS N'Сумма' FROM Koshelek.dengi
+ -- SELECT Name_valut AS N'Р’Р°Р»СЋС‚Р°', Summa AS N'РЎСѓРјРјР°' FROM Koshelek.dengi
   
   --SELECT * FROM TableOfCursValut.curs
 
