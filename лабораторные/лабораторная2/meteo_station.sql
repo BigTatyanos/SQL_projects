@@ -80,15 +80,15 @@ GO
 
 INSERT INTO [KN301_Borodina].Izmerenia.stancia 
   VALUES
-  (109876,N'Свердловская1',N'Екатеринбург Столичная 148')
- ,(276840,N'Челябинская23',N'Челябинск Ленина 13')
- ,(300689,N'Томская44',N'Томск Академическая 97')
+  (109876,N'РЎРІРµСЂРґР»РѕРІСЃРєР°СЏ1',N'Р•РєР°С‚РµСЂРёРЅР±СѓСЂРі РЎС‚РѕР»РёС‡РЅР°СЏ 148')
+ ,(276840,N'Р§РµР»СЏР±РёРЅСЃРєР°СЏ23',N'Р§РµР»СЏР±РёРЅСЃРє Р›РµРЅРёРЅР° 13')
+ ,(300689,N'РўРѕРјСЃРєР°СЏ44',N'РўРѕРјСЃРє РђРєР°РґРµРјРёС‡РµСЃРєР°СЏ 97')
 
  INSERT INTO [KN301_Borodina].Izmerenia.tip_izmerenii
   VALUES 
-  (123456,N'Температура', N'Цельсия')
- ,(298654,N'Давление', N'мм.рт.ст')
- ,(345690,N'Сила ветра', N'м/с')
+  (123456,N'РўРµРјРїРµСЂР°С‚СѓСЂР°', N'Р¦РµР»СЊСЃРёСЏ')
+ ,(298654,N'Р”Р°РІР»РµРЅРёРµ', N'РјРј.СЂС‚.СЃС‚')
+ ,(345690,N'РЎРёР»Р° РІРµС‚СЂР°', N'Рј/СЃ')
 
  INSERT INTO [KN301_Borodina].Izmerenia.zurnal
  (Data_izmerenii,Time_izmerenii,Znachenie,ID_izmerenii,ID_stancii)
@@ -100,14 +100,14 @@ INSERT INTO [KN301_Borodina].Izmerenia.stancia
  ,('20200108','18:00:50',25,345690,300689)
  GO
 
-SELECT Izmerenia.stancia.Name_stancii AS 'Название станции', Izmerenia.stancia.Adres AS 'Адрес станции',
-				Izmerenia.zurnal.ID_stancii AS 'ID станции', Izmerenia.zurnal.ID_izmerenii AS 'ID измерений',
-				Izmerenia.tip_izmerenii.Name_izmerenii AS 'Название измерений', Izmerenia.zurnal.Znachenie AS 'Значение измерений',
-				Izmerenia.tip_izmerenii.Ed_izmerenii AS 'Единицы измерения', 
+SELECT Izmerenia.stancia.Name_stancii AS 'РќР°Р·РІР°РЅРёРµ СЃС‚Р°РЅС†РёРё', Izmerenia.stancia.Adres AS 'РђРґСЂРµСЃ СЃС‚Р°РЅС†РёРё',
+				Izmerenia.zurnal.ID_stancii AS 'ID СЃС‚Р°РЅС†РёРё', Izmerenia.zurnal.ID_izmerenii AS 'ID РёР·РјРµСЂРµРЅРёР№',
+				Izmerenia.tip_izmerenii.Name_izmerenii AS 'РќР°Р·РІР°РЅРёРµ РёР·РјРµСЂРµРЅРёР№', Izmerenia.zurnal.Znachenie AS 'Р—РЅР°С‡РµРЅРёРµ РёР·РјРµСЂРµРЅРёР№',
+				Izmerenia.tip_izmerenii.Ed_izmerenii AS 'Р•РґРёРЅРёС†С‹ РёР·РјРµСЂРµРЅРёСЏ', 
 				DATENAME(DD, Izmerenia.zurnal.Data_izmerenii)
 				+' '+DATENAME(MM, Izmerenia.zurnal.Data_izmerenii)
-				+' '+DATENAME(YY, Izmerenia.zurnal.Data_izmerenii) AS 'Дата',
-				Izmerenia.zurnal.Time_izmerenii AS 'Время'
+				+' '+DATENAME(YY, Izmerenia.zurnal.Data_izmerenii) AS 'Р”Р°С‚Р°',
+				Izmerenia.zurnal.Time_izmerenii AS 'Р’СЂРµРјСЏ'
 				
 FROM     Izmerenia.tip_izmerenii INNER JOIN
                   Izmerenia.zurnal ON Izmerenia.tip_izmerenii.ID_izmerenii = Izmerenia.zurnal.ID_izmerenii INNER JOIN
